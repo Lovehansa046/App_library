@@ -2,10 +2,64 @@ package Library;
 
 import entity.Author;
 import entity.Book;
+import entity.History;
+import entity.Reeter;
+
+import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 public class App {
     public void run() {
-
+        Scanner scanner = new Scanner(System.in);
+        boolean repeat = true;
+        Book book = null;
+        Reeter reeter = null;
+        History history = null;
+        do{
+            System.out.println("Задачи: ");
+            System.out.println("0 - Закончить программу");
+            System.out.println("1 - Добавить книгу");
+            System.out.println("2 - Добавить Читателя");
+            System.out.println("3 - Выдать Книгу");
+            System.out.println("4 - Вернуть книгу");
+            System.out.println("Выберите задачу: ");
+            int task = scanner.nextInt();
+            scanner.nextLine();
+            switch (task) {
+                case 0:
+                    repeat = false;
+                    break;
+                case 1:
+                    System.out.println("1 - Добавить книгу");
+                    book = createBook("Война и мир", 3, 1956);
+                    book.addAuthor(createAuthor("Лев", "Толстой", 1828));
+                    System.out.println(book);
+                    break;
+                case 2:
+                    System.out.println("2 - Добавить Читателя");
+                    reeter = new Reeter();
+                    reeter.setFirstname("Иван");
+                    reeter.setLastname("Иванов");
+                    reeter.setPhone("55548356");
+                    System.out.println(reeter);
+                    break;
+                case 3:
+                    System.out.println("3 - Выдать Книгу");
+                    history = new History();
+                    history.setBook(book);
+                    history.setReeter(reeter);
+                    history.setTakeOnBook(new GregorianCalendar().getTime());
+                    System.out.println(history);
+                    break;
+                case 4:
+                    System.out.println("4 - Вернуть книгу");
+                    history.setReturnBook(new GregorianCalendar().getTime());
+                    System.out.println(history);
+                default:
+                    System.out.println("Выберите задачу из списка!");
+            }
+        }while(repeat);
+        System.out.println("Закрытие программы, Досвидание ваше привосходительство!");
     }
 
     public Book createBook(String bookName, int quantity, int publishedYear) {

@@ -9,7 +9,7 @@ public class Book {
     int quantity;
 
     public  Book() {
-
+        authors = new Author[0];
     }
 
     public String getBookName() {
