@@ -22,6 +22,7 @@ public class App {
             System.out.println("2 - Добавить Читателя");
             System.out.println("3 - Выдать Книгу");
             System.out.println("4 - Вернуть книгу");
+            System.out.println("5 - Добавить книгу (ручное заполение)");
             System.out.println("Выберите задачу: ");
             int task = scanner.nextInt();
             scanner.nextLine();
@@ -56,7 +57,7 @@ public class App {
                     history.setReturnBook(new GregorianCalendar().getTime());
                     System.out.println(history);
                 case 5:
-                    System.out.println("5 - ");
+                    System.out.println("5 - Добавить книгу (ручное заполение)");
 
                     /////// о книге начало записи
                     System.out.println("Введите название книги: ");
