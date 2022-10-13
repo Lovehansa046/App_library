@@ -54,9 +54,9 @@ public class Book {
     public String toString() {
         return "Book{" +
                 "bookName='" + bookName + '\'' +
-                ", authors=" + Arrays.toString(authors) +
-                ", publishedYear=" + publishedYear +
                 ", quantity=" + quantity +
+                ", publishedYear=" + publishedYear +
+                ", authors=" + Arrays.toString(authors) +
                 '}';
     }
 }

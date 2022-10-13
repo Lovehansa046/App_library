@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class App {
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
         boolean repeat = true;
         Book book = null;
         Reeter reeter = null;
@@ -58,28 +57,29 @@ public class App {
                     System.out.println(history);
                 case 5:
                     System.out.println("5 - ");
-                    Scanner scanner1 = new Scanner(System.in);
-                    String booknames = scanner.nextLine();
 
+                    /////// о книге начало записи
                     System.out.println("Введите название книги: ");
-                    int bookname =  str.indexOf(booknames);
+                    String bookname = scanner.nextLine();
                     System.out.println("Введите количество книг: ");
-                    int quantity = scanner1.nextInt();
+                    int quantity = scanner.nextInt();
                     System.out.println("Введите год издания книги: ");
-                    int year = scanner1.nextInt();
-                    book = createBook(String.valueOf(bookname), quantity, year);
+                    int year = scanner.nextInt();
+                    ////// о книги концовка записи
 
+                    ////// о авторе начало записи
+                     System.out.println("Введите имя автора ");
                     String authorname = scanner.nextLine();
-                    String authorlastname = scanner.nextLine();
-
-
-                    System.out.println("Введите имя автора ");
-                    int authornames =   str.indexOf(authorname);
                     System.out.println("Введите фамилию автора: ");
-                    int authorlastnames = str.indexOf(authorlastname);
+                    String authorlastname = scanner.nextLine();
                     System.out.println("Введите год рождения автора: ");
                     int birthday = scanner.nextInt();
-                    book.addAuthor(createAuthor(String.valueOf(authornames), String.valueOf(authorlastnames), birthday));
+                    ////// о авторе конец записи
+
+                    book = createBook(bookname, quantity, year);
+
+                    book.addAuthor(createAuthor(authorname, authorlastname, birthday));
+
                     System.out.println(book);
 
 
