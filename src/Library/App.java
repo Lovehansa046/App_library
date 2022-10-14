@@ -135,7 +135,17 @@ public class App {
                 case 5:
                     System.out.println("5 - Список Выданных Книг ");
                     for (int i = 0; i < histories.length; i++) {
-                        System.out.print(i+1+". "+histories[i].getBook().getBookName());
+                        if (histories[i].getReturnBook() == null) {
+                            System.out.print(i + 1 + ". " + histories[i].getBook().getBookName());
+                            for (int j = 0; j < histories[i].getBook().getAuthors().length; j++) {
+                                System.out.printf("%s %s %d",
+                                        histories[i].getBook().getAuthors()[j].getFirstname(),
+                                        histories[i].getBook().getAuthors()[j].getLastname(),
+                                        histories[i].getBook().getAuthors()[j].getBirthday());
+
+                            }
+                            System.out.println();
+                        }
                     }
                     break;
                 default:
