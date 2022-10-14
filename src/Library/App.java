@@ -102,7 +102,7 @@ public class App {
                     System.out.println("3 - Выдать Книгу");
                     System.out.println("Список читателей: ");
                     for (int i = 0; i < reeters.length; i++) {
-                        System.out.printf(i+1+". "+books[i].getBookName()+". ");
+                        System.out.printf(i+1+". "+reeters[i].getFirstname()+". "+reeters[i].getLastname());
                     }
                     System.out.print("Выбери читателя: ");
                     int NumberReader = scanner.nextInt(); scanner.nextLine();
