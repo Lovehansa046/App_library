@@ -29,7 +29,7 @@ public class App {
             System.out.println("2 - Добавить Читателя");
             System.out.println("3 - Выдать Книгу");
             System.out.println("4 - Вернуть книгу");
-            System.out.println("5 - Добавить книгу (ручное заполение)");
+            System.out.println("5 - Список Выданных Книг ");
             System.out.println("Выберите задачу: ");
             int task = scanner.nextInt();
             scanner.nextLine();
