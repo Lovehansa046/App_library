@@ -59,23 +59,23 @@ public class App {
                 case 5:
                     System.out.println("5 - Добавить книгу (ручное заполение)");
 
-                    /////// о книге начало записи
+
                     System.out.println("Введите название книги: ");
                     String bookname = scanner.nextLine();
                     System.out.println("Введите количество книг: ");
                     int quantity = scanner.nextInt();
                     System.out.println("Введите год издания книги: ");
                     int year = scanner.nextInt();
-                    ////// о книги концовка записи
 
-                    ////// о авторе начало записи
+
+
                      System.out.println("Введите имя автора ");
                     String authorname = scanner.nextLine();
                     System.out.println("Введите фамилию автора: ");
                     String authorlastname = scanner.nextLine();
                     System.out.println("Введите год рождения автора: ");
                     int birthday = scanner.nextInt();
-                    ////// о авторе конец записи
+
 
                     book = createBook(bookname, quantity, year);
 
