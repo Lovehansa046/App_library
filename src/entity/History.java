@@ -2,11 +2,12 @@ package entity;
 
 import java.util.Date;
 
+
 public class History {
-    Book book;
-    Reeter reeter;
-    Date takeOnBook;
-    Date returnBook;
+    private Book book;
+    private Reader reader;
+    private Date takeOnBook;
+    private Date returnBook;
 
     public History() {
     }
@@ -19,12 +20,12 @@ public class History {
         this.book = book;
     }
 
-    public Reeter getReeter() {
-        return reeter;
+    public Reader getReader() {
+        return reader;
     }
 
-    public void setReeter(Reeter reeter) {
-        this.reeter = reeter;
+    public void setReader(Reader reader) {
+        this.reader = reader;
     }
 
     public Date getTakeOnBook() {
@@ -45,12 +46,12 @@ public class History {
 
     @Override
     public String toString() {
-        return "History{" +
-                "book=" + book +
-                ", reeter=" + reeter +
-                ", takeOnBook=" + takeOnBook +
-                ", returnBook=" + returnBook +
-                '}';
+        return "History{"
+                + "book=" + book
+                + ", reader=" + reader
+                + ", takeOnBook=" + takeOnBook
+                +", returnBook=" + returnBook
+                + '}';
     }
-}
 
+}
