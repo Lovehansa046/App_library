@@ -3,22 +3,12 @@ package entity;
 import java.util.Arrays;
 
 public class Book {
-    private String title;
+    private String bookName;
+    private Author[] authors;
+    private int publishedYear;
+    private int quantity;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    String bookName;
-    Author[] authors;
-    int publishedYear;
-    int quantity;
-
-    public  Book() {
+    public Book() {
         authors = new Author[0];
     }
 
@@ -38,36 +28,14 @@ public class Book {
         this.authors = authors;
     }
 
-    public void addAuthor(Author author) {
-        Author[] newAuthors = Arrays.copyOf(authors, authors.length+1); //Скопировать autrhors в newAuthors, где на одну ячейку больше
-        newAuthors[newAuthors.length-1] = author; //Добавить в эту ячейку author из параметра метода
-        authors = newAuthors; //Скопировать ссылку newAuthors в authors
+    public void addAuthor(Author author){
+        Author[] newAuthors = Arrays.copyOf(authors, authors.length+1);
+        newAuthors[newAuthors.length - 1] = author;
+        authors = newAuthors;
     }
 
     public int getPublishedYear() {
         return publishedYear;
-    }
-
-    public void setPublishedYear(int publishedYear) {
-        this.publishedYear = publishedYear;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bookName='" + bookName + '\'' +
-                ", quantity=" + quantity +
-                ", publishedYear=" + publishedYear +
-                ", authors=" + Arrays.toString(authors) +
-                '}';
     }
     public void removeAuthor(int numberOfAuthor){
         //обнуляем указанного автора (по индексу)
@@ -85,4 +53,26 @@ public class Book {
         //копируем ссылку на новый массив в книгу
         this.setAuthors(newAuthors);
     }
+    public void setPublishedYear(int publishedYear) {
+        this.publishedYear = publishedYear;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{"
+                + "bookName=" + bookName
+                + ", authors=" + Arrays.toString(authors)
+                + ", publishedYear=" + publishedYear
+                + ", quantity=" + quantity
+                + '}';
+    }
+
 }
