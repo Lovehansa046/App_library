@@ -2,13 +2,14 @@ package entity;
 
 import java.util.Arrays;
 
-public class Book {
-    String bookName;
-    Author[] authors;
-    int publishedYear;
-    int quantity;
 
-    public  Book() {
+public class Book {
+    private String bookName;
+    private Author[] authors;
+    private int publishedYear;
+    private int quantity;
+
+    public Book() {
         authors = new Author[0];
     }
 
@@ -28,10 +29,10 @@ public class Book {
         this.authors = authors;
     }
 
-    public void addAuthor(Author author) {
-        Author[] newAuthors = Arrays.copyOf(authors, authors.length+1); //Скопировать autrhors в newAuthors, где на одну ячейку больше
-        newAuthors[newAuthors.length-1] = author; //Добавить в эту ячейку author из параметра метода
-        authors = newAuthors; //Скопировать ссылку newAuthors в authors
+    public void addAuthor(Author author){
+        Author[] newAuthors = Arrays.copyOf(authors, authors.length+1);
+        newAuthors[newAuthors.length - 1] = author;
+        authors = newAuthors;
     }
 
     public int getPublishedYear() {
@@ -52,11 +53,12 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "bookName='" + bookName + '\'' +
-                ", quantity=" + quantity +
-                ", publishedYear=" + publishedYear +
-                ", authors=" + Arrays.toString(authors) +
-                '}';
+        return "Book{"
+                + "bookName=" + bookName
+                + ", authors=" + Arrays.toString(authors)
+                + ", publishedYear=" + publishedYear
+                + ", quantity=" + quantity
+                + '}';
     }
+
 }
