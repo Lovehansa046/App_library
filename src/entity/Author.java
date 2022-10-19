@@ -1,12 +1,11 @@
 package entity;
 
 public class Author {
-    String firstname;
-    String lastname;
-    int birthday;
+    private String firstname;
+    private String lastname;
+    private int birthday;
 
     public Author() {
-
     }
 
     public String getFirstname() {
@@ -35,10 +34,12 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", birthday=" + birthday +
-                '}';
+        return "Author{"
+                + "firstname=" + firstname
+                + ", lastname=" + lastname
+                + ", birthday=" + birthday
+                + '}';
     }
+
+
 }
