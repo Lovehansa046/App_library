@@ -199,32 +199,32 @@ public class App {
         int numBookForEdit = scanner.nextInt(); scanner.nextLine();
         System.out.print("Название книги: ");
         System.out.println(books[numBookForEdit - 1].getBookName());
-        System.out.print("Изменить название книги? (y/n)");
+        System.out.print("Изменить название книги? (да/нет)");
         String edit = scanner.nextLine();
-        if(edit.equals("y")){
+        if(edit.equals("да")){
             System.out.print("Введите новое название книги: ");
             books[numBookForEdit - 1].setBookName(scanner.nextLine());
         }
         System.out.print("Год издания книги: ");
         System.out.println(books[numBookForEdit - 1].getPublishedYear());
-        System.out.print("Изменить год издания книги? (y/n)");
+        System.out.print("Изменить год издания книги? (да/нет)");
         edit = scanner.nextLine();
-        if(edit.equals("y")){
+        if(edit.equals("да")){
             System.out.print("Введите новое название книги: ");
             books[numBookForEdit - 1].setPublishedYear(scanner.nextInt());scanner.nextLine();
         }
         System.out.print("Количество экземпляров книги: ");
         System.out.println(books[numBookForEdit - 1].getQuantity());
-        System.out.print("Изменить количество экземпляров книги? (y/n)");
+        System.out.print("Изменить количество экземпляров книги? (да/нет)");
         edit = scanner.nextLine();
-        if(edit.equals("y")){
+        if(edit.equals("да")){
             System.out.print("Введите другое количество книги: ");
             books[numBookForEdit - 1].setQuantity(scanner.nextInt());scanner.nextLine();
         }
         System.out.println("Авторов у книги "+books[numBookForEdit - 1].getAuthors().length);
-        System.out.println("Изменить количество авторов? (y/n)");
+        System.out.println("Изменить количество авторов? (да/нет)");
         edit = scanner.nextLine();
-        if(edit.equals("y")){// Меняем количество авторов
+        if(edit.equals("да")){// Меняем количество авторов
             System.out.print("Введите новое количество авторов: ");
             int newCountAuthorsInBook = scanner.nextInt();
             scanner.nextLine();
@@ -255,21 +255,21 @@ public class App {
                         System.out.println(i+1+"-й автор: "
                                 +books[numBookForEdit - 1].getAuthors()[i].getFirstname()+" "+
                                 books[numBookForEdit - 1].getAuthors()[i].getLastname());
-                        System.out.print("Изменить имя автора? (y/n)");
+                        System.out.print("Изменить имя автора? (да/нет)");
                         edit = scanner.nextLine();
-                        if(edit.equals("y")){
+                        if(edit.equals("да")){
                             System.out.print("Введите другое имя автора: ");
                             books[numBookForEdit - 1].getAuthors()[i].setFirstname(scanner.nextLine());
                         }
-                        System.out.print("Изменить фамилию автора? (y/n)");
+                        System.out.print("Изменить фамилию автора? (да/нет)");
                         edit = scanner.nextLine();
-                        if(edit.equals("y")){
+                        if(edit.equals("да")){
                             System.out.print("Введите другую фамилию автора: ");
                             books[numBookForEdit - 1].getAuthors()[i].setLastname(scanner.nextLine());
                         }
-                        System.out.print("Изменить год рождения автора? (y/n)");
+                        System.out.print("Изменить год рождения автора? (да/нет)");
                         edit = scanner.nextLine();
-                        if(edit.equals("y")){
+                        if(edit.equals("да")){
                             System.out.print("Введите другой год рождения автора: ");
                             books[numBookForEdit - 1].getAuthors()[i].setBirthday(scanner.nextInt());scanner.nextLine();
                         }
