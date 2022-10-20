@@ -7,6 +7,16 @@ import java.util.Scanner;
 
 public class BookManager {
 
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        BookManager.count = count;
+    }
+
+    public static int count;
+
     private final Scanner scanner;
 
     public BookManager() {
@@ -147,6 +157,8 @@ public class BookManager {
         String publishedYear = scanner.nextLine();
         System.out.print("Введите количество экземпляров книги: ");
         String quantity = scanner.nextLine();
+
+        count = new Integer(quantity);
 
         Book book = createBook(bookName, new Integer(quantity), Integer.parseInt(publishedYear));
         System.out.print("Введите количество авторов книги:");

@@ -1,8 +1,5 @@
 package Library;
 
-import Managers.BookManager;
-import Managers.Histormanager;
-import Managers.ReaderManager;
 import entity.Author;
 import entity.Book;
 import entity.History;
@@ -10,6 +7,9 @@ import entity.Reader;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import Managers.BookManager;
+import Managers.HistoryManager;
+import Managers.ReaderManager;
 
 
 public class App {
@@ -19,7 +19,7 @@ public class App {
     private History[] histories;
     private final BookManager bookManager;
     private final ReaderManager readerManager;
-    private final Histormanager histormanager;
+    private final HistoryManager historyManager;
 
     public App() {
         scanner = new Scanner(System.in);
@@ -28,14 +28,12 @@ public class App {
         histories = new History[0];
         bookManager = new BookManager();
         readerManager = new ReaderManager();
-        histormanager = new Histormanager();
+        historyManager = new HistoryManager();
     }
 
-    public void run() {
+    public void run(){
         boolean repeat = true;
-
-        History history = null;
-        do {
+        do{
             System.out.println("Задачи: ");
             System.out.println("0. Закончить программу");
             System.out.println("1. Добавить книгу");
@@ -63,15 +61,15 @@ public class App {
                     break;
                 case 3:
                     System.out.println("3. Выдать книгу");
-                    addHistories(histormanager.takeOnBook(readers, books));
+                    addHistory(historyManager.takeOnBook(books, readers));
                     break;
                 case 4:
                     System.out.println("4. Вернуть книгу");
-                    histormanager.returnBook(histories);
+                    histories = historyManager.returnBook(histories);
                     break;
                 case 5:
                     System.out.println("5. Список выданных книг");
-                    histormanager.printListReadingBooks(histories);
+                    historyManager.printReadingBooks(histories);
                     break;
                 case 6:
                     System.out.println("6. Список книг");
@@ -82,28 +80,25 @@ public class App {
                     readerManager.printListReaders(readers);
                     break;
                 case 8:
-                    System.out.println("8. Редактировать книгу");
                     this.books = bookManager.changeBook(books);
                     break;
                 default:
-                    System.out.println("Выберите задачу из списка!");
-                    ;
+                    System.out.println("Выберите задачу из списка!");;
             }
-
-        } while (repeat);
-        System.out.println("Закрытие программы, досвидания!");
-    }
-    private void addBook(Book book){
-        books = Arrays.copyOf(books, books.length+1);
-        books[books.length-1] = book;
+        }while(repeat);
+        System.out.println("Закрытие программы, пока!");
     }
 
+    private void addBook(Book book) {
+        this.books = Arrays.copyOf(this.books, this.books.length+1);
+        this.books[this.books.length - 1] = book;
+    }
     private void addReader(Reader reader) {
-        readers = Arrays.copyOf(readers, readers.length + 1);
-        readers[readers.length - 1] = reader;
+        this.readers = Arrays.copyOf(this.readers, this.readers.length+1);
+        this.readers[this.readers.length - 1] = reader;
     }
-    private void addHistories(History history) {
-        histories = Arrays.copyOf(histories, histories.length + 1);
-        histories[histories.length - 1] = history;
+    private void addHistory(History histories) {
+        this.histories = Arrays.copyOf(this.histories, this.histories.length+1);
+        this.histories[this.histories.length - 1] = histories;
     }
 }
