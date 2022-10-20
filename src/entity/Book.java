@@ -4,6 +4,16 @@ import java.util.Arrays;
 
 public class Book {
     private String bookName;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    private String title;
     private Author[] authors;
     private int publishedYear;
     private int quantity;
