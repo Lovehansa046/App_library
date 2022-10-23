@@ -4,13 +4,16 @@ import entity.Book;
 import entity.History;
 import entity.Reader;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 
 public class HistoryManager {
         private final Scanner scanner;
 
-        public HistoryManager() {
+        private Book[] books;
+
+    public HistoryManager() {
             scanner = new Scanner(System.in);
         }
 
@@ -23,28 +26,28 @@ public class HistoryManager {
             int numberReader = scanner.nextInt(); scanner.nextLine();
             System.out.println("Список книг: ");
             for (int i = 0; i < books.length; i++) {
-                System.out.print(i+1+". "+books[i].getBookName()+". ");
+                System.out.print(i+1+". "+books[i].getBookName());
                 for (int j = 0; j < books[i].getAuthors().length; j++) {
-                    System.out.printf("%s %s %d",
+                    System.out.printf("%s %s %d %d",
                             books[i].getAuthors()[j].getFirstname(),
                             books[i].getAuthors()[j].getLastname(),
-                            books[i].getAuthors()[j].getBirthday());
+                            books[i].getAuthors()[j].getBirthday(),
+                            books[i].getQuantity());
+
 
                 }
                 System.out.println();
             }
+
             System.out.print("Выбери номер книги: ");
             int numberBook = scanner.nextInt();scanner.nextLine();
+
+            BookManager.QuantiCount();
+
             History history = new History();
             history.setBook(books[numberBook - 1]);
             history.setReader(readers[numberReader-1]);
             history.setTakeOnBook(new GregorianCalendar().getTime());
-            if(BookManager.count > 0) {
-                BookManager.count--;
-                System.out.println(BookManager.count + " - Количество оставшихся экземпляров");
-            } if(BookManager.count == 0) {
-                System.out.println("Книги закончились! Произвести выдачу не возможно!");
-            }
             return history;
         }
 
@@ -70,12 +73,9 @@ public class HistoryManager {
             System.out.println("Список выданных книг: ");
             this.printReadingBooks(histories);
             System.out.print("Выберите из списка номер возвращаемой книги: ");
+            BookManager.QuantiCountPlus();
             int numberReturnBook = scanner.nextInt();scanner.nextLine();
             histories[numberReturnBook - 1].setReturnBook(new GregorianCalendar().getTime());
-            if (BookManager.count >= 0){
-                BookManager.count++;
-                System.out.println(BookManager.count + " - Количество оставшихся экземпляров");
-            }
             return histories;
         }
     }

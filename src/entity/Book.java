@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Book {
     private String bookName;
 
+
     public String getTitle() {
         return title;
     }
@@ -17,6 +18,7 @@ public class Book {
     private Author[] authors;
     private int publishedYear;
     private int quantity;
+
 
     public Book() {
         authors = new Author[0];
@@ -71,8 +73,9 @@ public class Book {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public int setQuantity(int quantity) {
         this.quantity = quantity;
+        return quantity;
     }
 
     @Override

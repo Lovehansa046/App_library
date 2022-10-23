@@ -4,6 +4,8 @@ import entity.Author;
 import entity.Book;
 import entity.History;
 import entity.Reader;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -54,6 +56,7 @@ public class App {
                 case 1:
                     System.out.println("1. Добавить книгу");
                     addBook(bookManager.createBookWithAuthor());
+
                     break;
                 case 2:
                     System.out.println("2. Добавить читателя");

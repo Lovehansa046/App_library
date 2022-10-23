@@ -1,33 +1,69 @@
 package Managers;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import entity.Author;
 import entity.Book;
+import entity.History;
+import entity.Reader;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class BookManager {
 
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        BookManager.count = count;
-    }
-
     public static int count;
 
+    public static String county;
+
+    public static LinkedList<String> QuantityCount1 = new LinkedList<String>();
     private final Scanner scanner;
 
     public BookManager() {
         scanner = new Scanner(System.in);
     }
 
+    public void Quanti() {
+        county = String.valueOf(count);
+        QuantityCount1.add(county);
+    }
+
+    public static void QuantiCountPlus(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Выбери номер книги: ");
+
+        int numberBook = scanner.nextInt();scanner.nextLine();
+        int a = Integer.parseInt(QuantityCount1.get(numberBook-1));
+        if (a >= 0){
+               a++;
+               System.out.println(a + " - Количество экзепляров у книги под комером:" + numberBook);     }
+        }
+    public static void QuantiCount() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Выбери номер книги: ");
+
+        int numberBook = scanner.nextInt();scanner.nextLine();
+
+        int a = Integer.parseInt(QuantityCount1.get(numberBook-1));
+        if (a > 0) {
+            a--;
+            System.out.println(a + " - Количество экзепляров у книги под комером:" + numberBook);
+        }
+        if (a <= 0) {
+            System.out.println("выдать книгу не возможно, так как экземпляров данной книги не осталось!");
+        }
+    }
+
+
     public Book createBook(String bookName, int quantity, int publishedYear) {
         Book book = new Book();
         book.setBookName(bookName);
         book.setPublishedYear(publishedYear);
-        book.setQuantity(quantity);
+        count = book.setQuantity(quantity);
+        Quanti();
+
+
+
         return book;
     }
 
@@ -157,8 +193,6 @@ public class BookManager {
         String publishedYear = scanner.nextLine();
         System.out.print("Введите количество экземпляров книги: ");
         String quantity = scanner.nextLine();
-
-        count = new Integer(quantity);
 
         Book book = createBook(bookName, new Integer(quantity), Integer.parseInt(publishedYear));
         System.out.print("Введите количество авторов книги:");
