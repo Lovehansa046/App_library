@@ -42,7 +42,16 @@ public class HistoryManager {
             System.out.print("Выбери номер книги: ");
             int numberBook = scanner.nextInt();scanner.nextLine();
 
-            BookManager.QuantiCount();
+            int QuantityCount = books[numberBook-1].getQuantity();
+
+            if (QuantityCount > 0) {
+                    QuantityCount--;
+                    books[numberBook-1].setQuantity(QuantityCount);
+                    System.out.println(QuantityCount + " - Количество экзепляров у книги под комером:" + numberBook);
+                }
+            if (QuantityCount <= 0) {
+                    System.out.println("выдать книгу не возможно, так как экземпляров данной книги не осталось!");
+                }
 
             History history = new History();
             history.setBook(books[numberBook - 1]);
@@ -73,8 +82,14 @@ public class HistoryManager {
             System.out.println("Список выданных книг: ");
             this.printReadingBooks(histories);
             System.out.print("Выберите из списка номер возвращаемой книги: ");
-            BookManager.QuantiCountPlus();
-            int numberReturnBook = scanner.nextInt();scanner.nextLine();
+            int numberReturnBook = scanner.nextInt();
+            scanner.nextLine();
+            int QuantityCount = histories[numberReturnBook - 1].getBook().getQuantity();
+            if (QuantityCount >= 0) {
+                QuantityCount++;
+                histories[numberReturnBook - 1].getBook().setQuantity(QuantityCount);
+                System.out.println(QuantityCount + " - Количество экзепляров у книги под комером:" + numberReturnBook);
+            }
             histories[numberReturnBook - 1].setReturnBook(new GregorianCalendar().getTime());
             return histories;
         }

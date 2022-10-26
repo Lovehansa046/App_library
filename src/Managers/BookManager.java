@@ -21,46 +21,13 @@ public class BookManager {
         scanner = new Scanner(System.in);
     }
 
-    public void Quanti() {
-        county = String.valueOf(count);
-        QuantityCount1.add(county);
-    }
-
-    public static void QuantiCountPlus(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Выбери номер книги: ");
-
-        int numberBook = scanner.nextInt();scanner.nextLine();
-        int a = Integer.parseInt(QuantityCount1.get(numberBook-1));
-        if (a >= 0){
-               a++;
-               System.out.println(a + " - Количество экзепляров у книги под комером:" + numberBook);     }
-        }
-    public static void QuantiCount() {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Выбери номер книги: ");
-
-        int numberBook = scanner.nextInt();scanner.nextLine();
-
-        int a = Integer.parseInt(QuantityCount1.get(numberBook-1));
-        if (a > 0) {
-            a--;
-            System.out.println(a + " - Количество экзепляров у книги под комером:" + numberBook);
-        }
-        if (a <= 0) {
-            System.out.println("выдать книгу не возможно, так как экземпляров данной книги не осталось!");
-        }
-    }
-
 
     public Book createBook(String bookName, int quantity, int publishedYear) {
         Book book = new Book();
         book.setBookName(bookName);
         book.setPublishedYear(publishedYear);
         count = book.setQuantity(quantity);
-        Quanti();
+//        Quanti();
 
 
 
