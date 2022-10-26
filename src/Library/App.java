@@ -1,13 +1,11 @@
 package Library;
 
-import entity.Author;
+
 import entity.Book;
 import entity.History;
 import entity.Reader;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 import Managers.BookManager;
 import Managers.HistoryManager;
@@ -83,6 +81,7 @@ public class App {
                     readerManager.printListReaders(readers);
                     break;
                 case 8:
+                    System.out.println("8. Редактировать книгу");
                     this.books = bookManager.changeBook(books);
                     break;
                 default:

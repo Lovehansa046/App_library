@@ -1,20 +1,16 @@
 package Managers;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
+
 import entity.Author;
 import entity.Book;
 import entity.History;
-import entity.Reader;
+
 
 import java.util.*;
 
 public class BookManager {
 
     public static int count;
-
-    public static String county;
-
-    public static LinkedList<String> QuantityCount1 = new LinkedList<String>();
     private final Scanner scanner;
 
     public BookManager() {
@@ -22,15 +18,33 @@ public class BookManager {
     }
 
 
+    public static void QuantityMinusCount(Book[] books){
+        int QuantityCount = books[HistoryManager.numberBook-1].getQuantity();
+
+        if (QuantityCount > 0) {
+            QuantityCount--;
+            books[HistoryManager.numberBook-1].setQuantity(QuantityCount);
+            System.out.println(QuantityCount + " - Количество экзепляров у книги под комером:" + HistoryManager.numberBook);
+        }
+        if (QuantityCount <= 0) {
+            System.out.println("выдать книгу не возможно, так как экземпляров данной книги не осталось!");
+        }
+    }
+
+    public static void QuantityPlusCount(History[] histories){
+        int QuantityCount = histories[HistoryManager.numberReturnBook - 1].getBook().getQuantity();
+        if (QuantityCount >= 0) {
+            QuantityCount++;
+            histories[HistoryManager.numberReturnBook - 1].getBook().setQuantity(QuantityCount);
+            System.out.println(QuantityCount + " - Количество экзепляров у книги под комером:" + HistoryManager.numberReturnBook);
+        }
+    }
+
     public Book createBook(String bookName, int quantity, int publishedYear) {
         Book book = new Book();
         book.setBookName(bookName);
         book.setPublishedYear(publishedYear);
         count = book.setQuantity(quantity);
-//        Quanti();
-
-
-
         return book;
     }
 

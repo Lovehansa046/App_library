@@ -4,11 +4,14 @@ import entity.Book;
 import entity.History;
 import entity.Reader;
 import java.util.GregorianCalendar;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 
 public class HistoryManager {
+
+    public static int numberBook;
+
+    public static int numberReturnBook;
         private final Scanner scanner;
 
         private Book[] books;
@@ -40,18 +43,9 @@ public class HistoryManager {
             }
 
             System.out.print("Выбери номер книги: ");
-            int numberBook = scanner.nextInt();scanner.nextLine();
+            numberBook = scanner.nextInt();scanner.nextLine();
 
-            int QuantityCount = books[numberBook-1].getQuantity();
-
-            if (QuantityCount > 0) {
-                    QuantityCount--;
-                    books[numberBook-1].setQuantity(QuantityCount);
-                    System.out.println(QuantityCount + " - Количество экзепляров у книги под комером:" + numberBook);
-                }
-            if (QuantityCount <= 0) {
-                    System.out.println("выдать книгу не возможно, так как экземпляров данной книги не осталось!");
-                }
+            BookManager.QuantityMinusCount(books);
 
             History history = new History();
             history.setBook(books[numberBook - 1]);
@@ -82,14 +76,9 @@ public class HistoryManager {
             System.out.println("Список выданных книг: ");
             this.printReadingBooks(histories);
             System.out.print("Выберите из списка номер возвращаемой книги: ");
-            int numberReturnBook = scanner.nextInt();
+            numberReturnBook = scanner.nextInt();
             scanner.nextLine();
-            int QuantityCount = histories[numberReturnBook - 1].getBook().getQuantity();
-            if (QuantityCount >= 0) {
-                QuantityCount++;
-                histories[numberReturnBook - 1].getBook().setQuantity(QuantityCount);
-                System.out.println(QuantityCount + " - Количество экзепляров у книги под комером:" + numberReturnBook);
-            }
+            BookManager.QuantityPlusCount(histories);
             histories[numberReturnBook - 1].setReturnBook(new GregorianCalendar().getTime());
             return histories;
         }
