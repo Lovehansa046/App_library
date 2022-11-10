@@ -1,6 +1,7 @@
 package Library;
 
 
+import Managers.DataManager;
 import entity.Book;
 import entity.History;
 import entity.Reader;
@@ -20,10 +21,12 @@ public class App {
     private final BookManager bookManager;
     private final ReaderManager readerManager;
     private final HistoryManager historyManager;
+    private final DataManager dataManager;
 
     public App() {
         scanner = new Scanner(System.in);
-        books = new Book[0];
+        dataManager = new DataManager();
+        books = dataManager.loadBooks();
         readers = new Reader[0];
         histories = new History[0];
         bookManager = new BookManager();
@@ -54,7 +57,8 @@ public class App {
                 case 1:
                     System.out.println("1. Добавить книгу");
                     addBook(bookManager.createBookWithAuthor());
-
+                    DataManager dataManager = new DataManager();
+                    dataManager.saveBooks(books);
                     break;
                 case 2:
                     System.out.println("2. Добавить читателя");
