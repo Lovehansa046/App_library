@@ -19,7 +19,7 @@ public class DataManager {
             objectOutputStream.writeObject(books);
             objectOutputStream.flush();
         } catch (FileNotFoundException e) {
-            System.out.println("Нет файла MyBooks");
+            System.out.println("Нет файла MyBooks.");
         } catch (IOException e) {
             System.out.println("Ошибка Ввода Вывода");
         }
